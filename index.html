@@ -38,19 +38,29 @@
             overflow-x: hidden;
         }
 
-        /* Subtle crushed-paper texture across the entire website */
+        /* Full-site crushed paper texture overlay
+           IMPORTANT: keep crushed-file.png in the same folder as index.html */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
-            background-image: url("crushed-paper.jpg");
+            width: 100%;
+            height: 100%;
+            background-image: url("./crushed-file.png");
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
-            opacity: 0.10;
+            opacity: 0.08;
             mix-blend-mode: multiply;
             pointer-events: none;
             z-index: 9999;
+        }
+
+        /* Keep the page itself above the body's normal background,
+           while the texture remains the top visual overlay. */
+        body {
+            position: relative;
+            min-height: 100vh;
         }
 
         /* Fast, subtle reveal without blur or lag */
