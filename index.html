@@ -40,27 +40,26 @@
             min-height: 100vh;
         }
 
-        /* Full-site SVG background 
-           IMPORTANT: keep "circle-scatter-haikei (1).svg" in the same folder as index.html */
+        /* Global Crushed Paper Overlay */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("circle-scatter-haikei (1).svg");
+            background-image: url("crushed-paper.jpg");
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.15; /* Keeps the circles subtle */
+            opacity: 0.10;
+            mix-blend-mode: multiply;
             pointer-events: none;
-            z-index: 0;
+            z-index: 9999;
         }
 
-        /* Elevates the page content above the fixed background SVG */
-        header, main, footer {
-            position: relative;
-            z-index: 10;
+        /* Subtle dot pattern for main backgrounds */
+        .bg-bg {
+            background-color: #f4f4f6;
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 24px 24px;
         }
 
         /* Fast, subtle reveal without blur or lag */
@@ -83,7 +82,7 @@
 <body class="font-sans antialiased selection:bg-accent selection:text-white">
 
     <!-- HEADER -->
-    <header class="sticky top-0 w-full bg-bg/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
+    <header class="sticky top-0 z-50 w-full bg-bg/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-24 flex items-center justify-between relative">
             
             <!-- Refined Text Wordmark Logo -->
@@ -119,7 +118,7 @@
         </div>
 
         <!-- Standard Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-bg border-b border-secondary/50 shadow-lg lg:hidden">
+        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-bg border-b border-secondary/50 shadow-lg lg:hidden z-40">
             <nav class="flex flex-col px-6 py-6 space-y-6">
                 <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Design Coaching Services</a>
                 <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Portfolio</a>
@@ -269,9 +268,9 @@
         <!-- LEAD MAGNET / CTA SECTION -->
         <section class="relative py-24 text-white border-t-8 border-accent bg-primary overflow-hidden">
             
-            <!-- Blob Background Integration -->
+            <!-- SVG Background Integration matching circle-scatter-haikei -->
             <div class="absolute inset-0 z-0 pointer-events-none">
-                <img src="blob-scene-haikei.svg" alt="Background pattern" class="w-full h-full object-cover opacity-90" aria-hidden="true" loading="lazy" />
+                <img src="circle-scatter-haikei.svg" alt="Background pattern" class="w-full h-full object-cover opacity-90" aria-hidden="true" loading="lazy" />
             </div>
 
             <!-- Content Container -->
