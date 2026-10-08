@@ -32,33 +32,35 @@
     </script>
 
     <style>
-        /* Premium full-site crushed paper background */
         body {
+            background-color: #f4f4f6;
             color: #1f1d1a;
             overflow-x: hidden;
-            background-color: #f4f4f6;
-            background-image:
-                linear-gradient(
-                    rgba(244, 244, 246, 0.88),
-                    rgba(244, 244, 246, 0.88)
-                ),
-                url("./crushed-paper.png");
-            background-size: auto, 900px auto;
-            background-position: center, center;
-            background-repeat: repeat, repeat;
-            background-attachment: scroll, scroll;
+            position: relative;
+            min-height: 100vh;
         }
 
-        /* Keep the main page transparent so the paper texture remains visible. */
-        main,
-        main section.bg-bg,
-        footer {
-            background-color: transparent !important;
+        /* Full-site SVG background 
+           IMPORTANT: keep "circle-scatter-haikei (1).svg" in the same folder as index.html */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("circle-scatter-haikei (1).svg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.15; /* Keeps the circles subtle */
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Header stays slightly opaque for readability while allowing a hint of texture. */
-        header {
-            background-color: rgba(244, 244, 246, 0.90) !important;
+        /* Elevates the page content above the fixed background SVG */
+        header, main, footer {
+            position: relative;
+            z-index: 10;
         }
 
         /* Fast, subtle reveal without blur or lag */
@@ -79,8 +81,9 @@
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-accent selection:text-white">
+
     <!-- HEADER -->
-    <header class="sticky top-0 z-50 w-full bg-bg/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
+    <header class="sticky top-0 w-full bg-bg/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-24 flex items-center justify-between relative">
             
             <!-- Refined Text Wordmark Logo -->
@@ -116,7 +119,7 @@
         </div>
 
         <!-- Standard Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-bg/95 border-b border-secondary/50 shadow-lg lg:hidden">
+        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-bg border-b border-secondary/50 shadow-lg lg:hidden">
             <nav class="flex flex-col px-6 py-6 space-y-6">
                 <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Design Coaching Services</a>
                 <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Portfolio</a>
@@ -165,7 +168,7 @@
         </section>
 
         <!-- PRESS & RECOGNITION SECTION -->
-        <section class="py-12 border-b border-secondary/50 reveal-element">
+        <section class="py-12 border-b border-secondary/50 reveal-element bg-bg/80 backdrop-blur-sm">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
                 <span class="font-sans font-bold text-xl tracking-tighter">KING 5</span>
                 <span class="font-serif italic text-2xl">livehappy</span>
@@ -177,7 +180,7 @@
         </section>
 
         <!-- PROBLEM / SOLUTION COPY -->
-        <section class="py-24 bg-transparent">
+        <section class="py-24 bg-bg/90 backdrop-blur-sm">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
                 
                 <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-primary mb-10 reveal-element">
@@ -201,7 +204,7 @@
         </section>
 
         <!-- TESTIMONIAL SECTION -->
-        <section class="py-20 bg-secondary/20 border-y border-secondary/50">
+        <section class="py-20 bg-secondary/40 border-y border-secondary/50 backdrop-blur-sm">
             <div class="max-w-5xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-start gap-10 reveal-element">
                 
                 <div class="text-accent/20 font-serif text-[120px] leading-none select-none -mt-8 hidden md:block">
@@ -229,11 +232,11 @@
         </section>
 
         <!-- ABOUT REBECCA SECTION -->
-        <section class="py-24 bg-transparent" id="about">
+        <section class="py-24 bg-bg/90 backdrop-blur-sm" id="about">
             <div class="max-w-6xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
                 <div class="relative reveal-element">
-                    <div class="absolute -inset-4 bg-secondary/30 rounded-lg -z-10 transform translate-x-4 translate-y-4"></div>
+                    <div class="absolute -inset-4 bg-secondary/50 rounded-lg -z-10 transform translate-x-4 translate-y-4"></div>
                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Rebecca - Designer and Coach working on plans" class="w-full h-auto object-cover rounded shadow-lg aspect-[4/5]" loading="lazy">
                 </div>
 
@@ -304,7 +307,7 @@
     </main>
 
     <!-- MINI FOOTER -->
-    <footer class="py-8 bg-transparent border-t border-secondary">
+    <footer class="py-8 bg-white border-t border-secondary relative z-10">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="font-sans text-xs uppercase tracking-widest text-text/50">
                 MAILING ADDRESS: 10002 AURORA AVE N, SUITE 36-513, SEATTLE WA 98133 | <a href="mailto:HELLO@SERIOUSLYHAPPYHOMES.COM" class="hover:text-accent transition-colors">HELLO@SERIOUSLYHAPPYHOMES.COM</a>
